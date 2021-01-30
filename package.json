@@ -1,0 +1,37 @@
+{
+  "name": "foodie-github.io",
+  "version": "1.0.0",
+  "description": "Social Media App that allows the community to share pictures/reviews of food and interact",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maresl/Foodie-github.io.git"
+  },
+  "keywords": [
+    "food",
+    "community",
+    "social",
+    "media",
+    "pictures",
+    "posts"
+  ],
+  "author": "Leslie Mares",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maresl/Foodie-github.io/issues"
+  },
+  "homepage": "https://github.com/maresl/Foodie-github.io",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.11.14",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1"
+  }
+}
