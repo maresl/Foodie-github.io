@@ -1,13 +1,13 @@
 module.exports = {
-    index,
     home,
-
+    register
 }
 
-function index(req, res){
-    res.redirect(`/home`)
-}
 
 function home(req, res){
     res.render(`home/home`)
+}
+
+function register(req, res){
+    res.render(`home/register`)
 }
