@@ -4,5 +4,5 @@ module.exports = {
 }
 
 function index(req, res){
-    res.render(`feed/feed`, {user: req.user})
+    res.render(`feed/feed`, {currentUser: req.user})
 }

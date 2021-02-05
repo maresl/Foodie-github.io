@@ -13,8 +13,6 @@ passport.use(new GoogleStrategy({
             if(err) return cb(err);
             //if user is already in db then fetch the user and provide them back to Passport by calling the cb callback method
             if(user){
-                console.log(user)
-                console.log(profile)
                 return cb(null, user)
             //If the user does not exist, we have a new user! We will add them to the database and pass along this new user in the cb callback method
             } else {

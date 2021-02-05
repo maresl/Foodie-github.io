@@ -10,13 +10,16 @@ const userSchema = new Schema ({
         type: mongoose.Types.ObjectId, 
         ref: `Post`
     }],
-    connections: [{
+    fellowFoodies: [{
         type: mongoose.Types.ObjectId,
         ref: `User`
     }],
     googleId: String,
     email: String,
-    profilePicture: String
+    profilePicture: {
+        type: String,
+        default: `https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg`
+    }
 })
 
 module.exports = mongoose.model(`User`, userSchema)

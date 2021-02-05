@@ -10,6 +10,8 @@ const port = 3000
 const homeRouter = require(`./routes/home`)
 const indexRouter = require(`./routes/index`)
 const feedRouter = require(`./routes/feed`)
+const profileRouter = require(`./routes/profile`)
+const postRouter = require(`./routes/post`)
 
 //connections
 require(`./models`)
@@ -41,6 +43,8 @@ app.use(passport.session())
 app.use(`/`, indexRouter)
 app.use(`/home`, homeRouter)
 app.use(`/feed`, feedRouter)
+app.use(`/profile`, profileRouter)
+app.use(`/post`, postRouter)
 
 
 
