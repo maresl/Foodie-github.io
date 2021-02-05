@@ -8,10 +8,13 @@ const port = 3000
 
 //routers
 const homeRouter = require(`./routes/home`)
+const indexRouter = require(`./routes/index`)
+const feedRouter = require(`./routes/feed`)
 
-//db commection 
+//connections
 require(`./models`)
 require(`dotenv`).config()
+require(`./config/passport`)
 
 app.set(`view engine`, `ejs`)
 
@@ -35,8 +38,9 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use(`/`, homeRouter)
+app.use(`/`, indexRouter)
 app.use(`/home`, homeRouter)
+app.use(`/feed`, feedRouter)
 
 
 

@@ -10,12 +10,13 @@ const userSchema = new Schema ({
         type: mongoose.Types.ObjectId, 
         ref: `Post`
     }],
-    followers: [{
+    connections: [{
         type: mongoose.Types.ObjectId,
         ref: `User`
     }],
     googleId: String,
-    email: String
+    email: String,
+    profilePicture: String
 })
 
 module.exports = mongoose.model(`User`, userSchema)
