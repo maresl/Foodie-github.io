@@ -1,5 +1,17 @@
-body {
+* {
   text-align: center;
+  font-family: "Sriracha", cursive;
+  background-color: #877f77;
+}
+
+.title {
+  background-image: url(https://empire-s3-production.bobvila.com/articles/wp-content/uploads/2017/03/wood-grain1.jpg);
+  background-position: center;
+  background-size: cover;
+  padding: 40px;
+  font-size: 100px;
+  margin: 0;
+  color: #141414;
 }
 
 .profile-pic {
@@ -12,6 +24,7 @@ body {
 .post-pic {
   width: 400px;
   height: auto;
+  margin: 0 auto;
 }
 
 .small-profile-pic {
@@ -22,6 +35,50 @@ body {
 }
 
 .post {
-  padding: 30px;
   border-style: solid 5px black;
+  background-color: #ffffff;
+  width: 400px;
+  margin: 40px auto;
+  padding: 20px 0;
+}
+
+.post-text {
+  background-color: #ffffff;
+}
+
+.intro-size {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container-fluid {
+  background-color: #212529;
+}
+a.navbar-brand {
+  background-color: #212529;
+}
+p {
+  background-color: #ffffff;
+}
+h5 {
+  background-color: #ffffff;
+}
+form {
+  background-color: #ffffff;
+}
+a {
+  background-color: #ffffff;
+}
+input {
+  background-color: #ffffff;
+}
+button {
+  background-color: #c98326;
+}
+.dark-form {
+  background-color: #877f77;
+}
+a.btn {
+  background-color: #c98326;
 }

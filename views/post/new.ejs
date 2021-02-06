@@ -1,10 +1,9 @@
 <%- include(`../partials/header`) %>
 <h1>Make a new post: </h1>
-<form action="/post/createPost" method="POST">
+<form class="dark-form" action="/post/createPost" method="POST">
     <input type="text" name="picture" placeholder="picture url">
     <input type="text" name="restaurant" placeholder="restaurant">
     <input type="text" name="caption" placeholder="caption">
     <button type="submit">Add</button>
 </form>
-<p><a href="/logout">Log Out</a></p>
 <%- include(`../partials/footer`) %>

@@ -1,13 +1,17 @@
 <%- include(`../partials/header`) %>
-<h1>This is the Feeds Page</h1>
-<p><a href="/logout">Log Out</a></p>
-<p><a href="/profile/<%= currentUser._id %>">My Profile</a></p>
-<p><a href="/post/newPost">Make a new post</a></p>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a href="/logout" class="navbar-brand" >Log Out</a>
+        <a href="/profile/<%= currentUser._id %>" class="navbar-brand" >My Profile</a>
+        <a href="/post/newPost" class="navbar-brand">Make a new post</a>
+    </div>
+  </nav>
+
 
 <% allPosts.forEach(post => { %>
     <div class="post">
-        <div class="post-title">
-            <div class="post-owner">
+        <div class="post-title post-text">
+            <div class="post-owner post-text">
                 <img class="small-profile-pic" src="<%= post.owner.profilePicture %>">
                 <p><a href="/profile/<%= post.owner._id %>"><%= post.owner.userName %></a></p>
             </div>
@@ -16,7 +20,7 @@
            </div>
         </div>
         <img class="post-pic" src="<%= post.picture %>" alt="">
-        <div class="post-body">
+        <div class="post-body post-text">
             <p><%= post.caption %></p>
             <h5>Comments:</h5>
             <% if (post.comments.length === 0 ) { %>
