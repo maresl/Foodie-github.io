@@ -1,5 +1,4 @@
 body {
-  background-color: blue;
   text-align: center;
 }
 
@@ -16,4 +15,9 @@ body {
 .small-profile-pic {
   width: 50px;
   border-radius: 25px;
+}
+
+.post {
+  padding: 30px;
+  border-style: solid 5px black;
 }

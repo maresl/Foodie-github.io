@@ -4,38 +4,32 @@
 <p><a href="/feed">Back to my feed</a></p>
 <% if(userFoundById._id.equals(currentUser && currentUser._id)) { %>
     <p><a href="/post/newPost">Make a new post</a></p>
-<% } else { %>
-    <p><a href="/follow/<%= userFoundById._id %>">Follow</a></p>
-<% } %>
+<% }%>
 <img class="profile-pic" src="<%= userFoundById.profilePicture %>">
-<p>Followers: </p>
-<% if (userFoundById.fellowFoodies.length === 0 ) { %>
-    <p>No fellow foodies yet!</p>
-<% } %>
-<% userFoundById.fellowFoodies.forEach(fellow => { %>
-    <ul>
-        <li><%= fellow.userName %></li>
-    </ul>
-<% }) %>
 
 <p>Posts: </p>
 <% if (userFoundById.posts.length === 0 ) { %>
     <p>No posts yet!</p>
 <% } %>
 <% userFoundById.posts.forEach( post => { %>
-    <div>
-        <img class="post-pic" src="<%= post.picture %>" alt="">
-        <div>
-            <p><%= post.caption %></p>
-            <p><%= post.restaurant %></p>
-            <p><%= post.owner %></p>
-            <% if(userFoundById._id.equals(currentUser && currentUser._id)) { %>
-                <form action="/post/delete/<%= post._id %>?_method=DELETE" method="POST">
-                    <button type="submit">Delete Post</button>
-                </form>
-          <% } %> 
+    <div class="post">
+        <div class="post-title">
+            <div class="post-owner">
+                <img class="small-profile-pic" src="<%= userFoundById.profilePicture %>">
+                <p><a href="/profile/<%= userFoundById._id %>"><%= userFoundById.userName %></a></p>
+            </div>
+           <div>
+               <p><%= post.restaurant %></p>
+           </div>
         </div>
-    </div>
+        <img class="post-pic" src="<%= post.picture %>" alt="">
+        <div class="post-body">
+            <p><%= post.caption %></p>
+            <% if(userFoundById._id.equals(currentUser && currentUser._id)) { %>
+            <form action="/post/delete/<%= post._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete Post</button>
+            </form>
+            <% } %> 
 <% }) %>
 
 

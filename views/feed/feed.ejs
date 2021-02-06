@@ -5,13 +5,19 @@
 <p><a href="/post/newPost">Make a new post</a></p>
 
 <% allPosts.forEach(post => { %>
-    <div>
+    <div class="post">
+        <div class="post-title">
+            <div class="post-owner">
+                <img class="small-profile-pic" src="<%= post.owner.profilePicture %>">
+                <p><a href="/profile/<%= post.owner._id %>"><%= post.owner.userName %></a></p>
+            </div>
+           <div>
+               <p><%= post.restaurant %></p>
+           </div>
+        </div>
         <img class="post-pic" src="<%= post.picture %>" alt="">
-        <div>
+        <div class="post-body">
             <p><%= post.caption %></p>
-            <p><%= post.restaurant %></p>
-            <p><%= post.owner.userName %></p>
-            <img class="small-profile-pic" src="<%= post.owner.profilePicture %>">
             <% if(post.owner._id.equals(currentUser && currentUser._id)) { %>
             <form action="/post/delete/<%= post._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Post</button>

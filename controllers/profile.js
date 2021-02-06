@@ -7,7 +7,6 @@ module.exports = {
 function index(req, res){
     User.findById(req.params.id)
         .populate({ path: `posts`, options: {sort: {createdAt: -1}}})
-        .populate(`fellowFoodies`)
         .exec(function(err, user){
             const context = {
                 currentUser: req.user,
