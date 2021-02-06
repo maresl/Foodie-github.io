@@ -14,8 +14,9 @@ const profileRouter = require(`./routes/profile`)
 const postRouter = require(`./routes/post`)
 
 //connections
-require(`./models`)
+
 require(`dotenv`).config()
+require(`./models`)
 require(`./config/passport`)
 
 app.set(`view engine`, `ejs`)
