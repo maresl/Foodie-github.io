@@ -10,10 +10,6 @@ const userSchema = new Schema ({
         type: mongoose.Types.ObjectId, 
         ref: `Post`
     }],
-    fellowFoodies: [{
-        type: mongoose.Types.ObjectId,
-        ref: `User`
-    }],
     googleId: String,
     email: String,
     profilePicture: {

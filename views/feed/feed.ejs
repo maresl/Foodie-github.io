@@ -18,6 +18,15 @@
         <img class="post-pic" src="<%= post.picture %>" alt="">
         <div class="post-body">
             <p><%= post.caption %></p>
+            <h5>Comments:</h5>
+            <% post.comments.forEach(comment => { %>
+                <p><%= comment.owner.userName %>: <%= comment.comment %></p>
+            <% }) %> 
+
+            <form action="/post/comment/<%= post._id %>" method="POST">
+                <input type="text" name="comment" placeholder="comment">
+                <button type="submit">Add Comment</button>
+            </form>
             <% if(post.owner._id.equals(currentUser && currentUser._id)) { %>
             <form action="/post/delete/<%= post._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Post</button>

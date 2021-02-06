@@ -5,6 +5,7 @@ module.exports = {
     new: newPost,
     delete: deletePost,
     create, 
+    comment
 }
 
 function newPost(req, res){
@@ -23,6 +24,16 @@ function create(req, res){
 function deletePost(req, res) {
     const postId = req.params.id
     Post.deleteOne({_id: postId}, function(err){
+        res.redirect(`../../feed`)
+    })
+}
+
+function comment(req, res){
+    const postId = req.params.id
+    req.body.owner = req.user
+    Post.findById(postId, function(err, targetPost){
+        targetPost.comments.push(req.body)
+        targetPost.save()
         res.redirect(`../../feed`)
     })
 }

@@ -5,7 +5,8 @@ module.exports = {
 
 function index(req, res){
     Post.find({})
-        .populate('owner')
+        .populate({path: 'comments', populate: {path: `owner`}})
+        .populate(`owner`)
         .sort({createdAt: -1})
         .exec(function (err, allPosts){
             if(err) return err
