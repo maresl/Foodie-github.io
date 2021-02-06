@@ -23,7 +23,8 @@
                 <p>No comments yet!</p>
             <% } %>
             <% post.comments.forEach(comment => { %>
-                <p><%= comment.owner.userName %>: <%= comment.comment %></p>
+                <p><%= comment.owner.userName %>: <%= comment.comment %>
+                </p>
             <% }) %> 
 
             <form action="/post/comment/<%= post._id %>" method="POST">
