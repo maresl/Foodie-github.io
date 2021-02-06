@@ -9,11 +9,18 @@ const addressSchema = new Schema ({
 })
 
 const restaurantSchema = new Schema ({
-    name: {
+    restaurantName: {
         type: String, 
         required: true
     },
     address: addressSchema,
+    posts:[{
+        type: mongoose.Types.ObjectId, 
+        ref: `Post`
+    }]
+},
+{
+    timestamps: true
 })
 
 module.exports = mongoose.model(`Restaurant`, restaurantSchema)
