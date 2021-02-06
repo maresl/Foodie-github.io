@@ -1,5 +1,5 @@
 const Post = require(`../models/Post`)
-const User = require(`../models/User`)
+const Restaurant = require(`../models/Restaurant`)
 
 module.exports = {
     new: newPost,
@@ -18,6 +18,7 @@ function create(req, res){
         req.user.posts.push(createdPost)
         req.user.save()
     })
+    
     res.redirect(`../feed`)
 }
 
