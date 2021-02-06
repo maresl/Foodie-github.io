@@ -1,10 +1,9 @@
 <%- include(`../partials/header`) %>
 <h1>Edit Post: </h1>
-<form action="/post/addEdit/<%= currentPost._id %>" method="POST">
+<form class="dark-form" action="/post/addEdit/<%= currentPost._id %>" method="POST">
     <input type="text" name="picture" value="<%= currentPost.picture %>">
     <input type="text" name="restaurant" value="<%= currentPost.restaurant %>">
     <input type="text" name="caption" value="<%= currentPost.caption %>">
     <button type="submit">Add</button>
 </form>
-<p><a href="/logout">Log Out</a></p>
 <%- include(`../partials/footer`) %>
