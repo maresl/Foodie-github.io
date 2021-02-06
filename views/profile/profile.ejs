@@ -1,11 +1,16 @@
 <%- include(`../partials/header`) %>
-<h1>Profile for: <%= userFoundById.userName %></h1>
-<h1>User is: <%= currentUser.userName %></h1>
+<h1><%= userFoundById.userName %></h1>
 <p><a href="/logout">Log Out</a></p>
-<img src="<%= userFoundById.profilePicture %>">
-<p>Connections: </p>
+<p><a href="/feed">Back to my feed</a></p>
+<% if(userFoundById._id.equals(currentUser && currentUser._id)) { %>
+    <p><a href="/post/newPost">Make a new post</a></p>
+<% } else { %>
+    <p><a href="/follow/<%= userFoundById._id %>">Follow</a></p>
+<% } %>
+<img class="profile-pic" src="<%= userFoundById.profilePicture %>">
+<p>Followers: </p>
 <% if (userFoundById.fellowFoodies.length === 0 ) { %>
-    <p>You don't have any fellow foodies yet!</p>
+    <p>No fellow foodies yet!</p>
 <% } %>
 <% userFoundById.fellowFoodies.forEach(fellow => { %>
     <ul>
@@ -15,17 +20,25 @@
 
 <p>Posts: </p>
 <% if (userFoundById.posts.length === 0 ) { %>
-    <p>You have not made any posts yet!</p>
+    <p>No posts yet!</p>
 <% } %>
-<% userFoundById.posts.forEach(post => { %>
-    <ul>
-        <li><%= post.caption %></li>
-    </ul>
+<% userFoundById.posts.forEach( post => { %>
+    <div>
+        <img class="post-pic" src="<%= post.picture %>" alt="">
+        <div>
+            <p><%= post.caption %></p>
+            <p><%= post.restaurant %></p>
+            <p><%= post.owner %></p>
+            <% if(userFoundById._id.equals(currentUser && currentUser._id)) { %>
+                <form action="/post/delete/<%= post._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete Post</button>
+                </form>
+          <% } %> 
+        </div>
+    </div>
 <% }) %>
 
-<% if(userFoundById._id.equals(currentUser && currentUser._id)) { %>
-    <a href="/post/newPost">Make a new post</a>
-<% } %>
+
 
 
 <%- include(`../partials/footer`) %>

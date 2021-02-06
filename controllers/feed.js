@@ -1,8 +1,15 @@
-const User = require(`../models/index`).User
+const Post = require(`../models/Post`)
 module.exports = {
     index
 }
 
 function index(req, res){
-    res.render(`feed/feed`, {currentUser: req.user})
+    Post.find({})
+        .populate('owner')
+        .sort({createdAt: -1})
+        .exec(function (err, allPosts){
+            if(err) return err
+            console.log(allPosts)
+            res.render(`feed/feed`, {allPosts, currentUser: req.user})
+        })
 }

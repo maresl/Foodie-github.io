@@ -2,4 +2,23 @@
 <h1>This is the Feeds Page</h1>
 <p><a href="/logout">Log Out</a></p>
 <p><a href="/profile/<%= currentUser._id %>">My Profile</a></p>
+<p><a href="/post/newPost">Make a new post</a></p>
+
+<% allPosts.forEach(post => { %>
+    <div>
+        <img class="post-pic" src="<%= post.picture %>" alt="">
+        <div>
+            <p><%= post.caption %></p>
+            <p><%= post.restaurant %></p>
+            <p><%= post.owner.userName %></p>
+            <img class="small-profile-pic" src="<%= post.owner.profilePicture %>">
+            <% if(post.owner._id.equals(currentUser && currentUser._id)) { %>
+            <form action="/post/delete/<%= post._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete Post</button>
+            </form>
+            <% } %> 
+        </div>
+    </div>
+<% }) %>
+
 <%- include(`../partials/footer`) %>

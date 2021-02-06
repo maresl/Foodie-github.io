@@ -2,3 +2,18 @@ body {
   background-color: blue;
   text-align: center;
 }
+
+.profile-pic {
+  width: 300px;
+  border-radius: 150px;
+}
+
+.post-pic {
+  width: 400px;
+  height: auto;
+}
+
+.small-profile-pic {
+  width: 50px;
+  border-radius: 25px;
+}
