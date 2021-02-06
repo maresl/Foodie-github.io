@@ -1,12 +1,19 @@
 <%- include(`../partials/header`) %>
-<h1><%= userFoundById.userName %></h1>
+
 <p><a href="/logout">Log Out</a></p>
 <p><a href="/feed">Back to my feed</a></p>
+
+
+<h1><%= userFoundById.userName %></h1>
+<img class="profile-pic" src="<%= userFoundById.profilePicture %>">
+<% if(userFoundById.bio && userFoundById.bio.length !== 0) { %>
+    <p><%= userFoundById.bio %></p>
+<% }%>
+
 <% if(userFoundById._id.equals(currentUser && currentUser._id)) { %>
+    <p><a href="/profile/update">Update Profile</a></p>
     <p><a href="/post/newPost">Make a new post</a></p>
 <% }%>
-<img class="profile-pic" src="<%= userFoundById.profilePicture %>">
-
 <p>Posts: </p>
 <% if (userFoundById.posts.length === 0 ) { %>
     <p>No posts yet!</p>
@@ -25,9 +32,24 @@
         <img class="post-pic" src="<%= post.picture %>" alt="">
         <div class="post-body">
             <p><%= post.caption %></p>
+            <h5>Comments:</h5>
+            <% if (post.comments.length === 0 ) { %>
+                <p>No comments yet!</p>
+            <% } %>
+            <% post.comments.forEach(comment => { %>
+                <p><%= comment.comment %></p>
+            <% }) %>
+
+            <form action="/post/comment/<%= post._id %>" method="POST">
+                <input type="text" name="comment" placeholder="comment">
+                <button type="submit">Add Comment</button>
+            </form> 
             <% if(userFoundById._id.equals(currentUser && currentUser._id)) { %>
             <form action="/post/delete/<%= post._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Post</button>
+            </form>
+            <form action="/post/edit/<%= post._id %>" method="GET">
+                <button type="submit">Edit Post</button>
             </form>
             <% } %> 
 <% }) %>

@@ -5,7 +5,9 @@ module.exports = {
     new: newPost,
     delete: deletePost,
     create, 
-    comment
+    comment,
+    edit,
+    addEdit
 }
 
 function newPost(req, res){
@@ -37,4 +39,21 @@ function comment(req, res){
         targetPost.save()
         res.redirect(`../../feed`)
     })
+}
+
+function edit(req, res){
+    Post.findById(req.params.id, function (err, currentPost){
+        res.render(`post/edit`, {currentPost})
+    })
+    
+}
+
+function addEdit(req, res){
+    Post.findById(req.params.id, function (err, currentPost){
+        currentPost.restaurant = req.body.restaurant
+        currentPost.picture = req.body.picture
+        currentPost.caption = req.body.caption
+        currentPost.save()
+    })
+    res.redirect(`/feed`)
 }

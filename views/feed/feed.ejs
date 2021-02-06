@@ -19,6 +19,9 @@
         <div class="post-body">
             <p><%= post.caption %></p>
             <h5>Comments:</h5>
+            <% if (post.comments.length === 0 ) { %>
+                <p>No comments yet!</p>
+            <% } %>
             <% post.comments.forEach(comment => { %>
                 <p><%= comment.owner.userName %>: <%= comment.comment %></p>
             <% }) %> 
@@ -30,6 +33,9 @@
             <% if(post.owner._id.equals(currentUser && currentUser._id)) { %>
             <form action="/post/delete/<%= post._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Post</button>
+            </form>
+            <form action="/post/edit/<%= post._id %>" method="GET">
+                <button type="submit">Edit Post</button>
             </form>
             <% } %> 
         </div>
